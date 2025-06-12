@@ -1,0 +1,32 @@
+# Core Data Analysis
+pandas==1.5.3
+numpy==1.24.3
+
+# Visualization
+matplotlib==3.7.1
+seaborn==0.12.2
+plotly==5.14.1
+
+# Data Version Control
+dvc==3.9.0
+
+# Testing & CI/CD
+pytest==7.3.1
+pytest-cov==4.0.0
+coverage==7.2.5
+
+# Jupyter Notebook Support
+jupyter==1.0.0
+ipykernel==6.22.0
+
+# Data Cleaning & Processing
+scipy==1.10.1
+scikit-learn==1.2.2
+
+# Additional Utilities
+python-dotenv==1.0.0
+pyyaml==6.0
+tqdm==4.65.0
+
+# Version Control Integration
+gitpython==3.1.31
