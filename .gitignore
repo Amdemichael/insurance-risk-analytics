@@ -1,5 +1,5 @@
 # DVC tracked files
-/data/
+!data/**/*.dvc  
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

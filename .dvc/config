@@ -1,0 +1,4 @@
+[core]
+    remote = localstorage
+['remote "localstorage"']
+    url = D:\Tutorials\KAIM\Weeks\Week 3\dvc_storage
