@@ -1,5 +1,5 @@
 # DVC tracked files
-/data/*
+/data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -79,4 +79,4 @@ htmlcov/
 .pytest_cache/
 
 # Virtual environments
-insurance-risk*/git
+insurance/
