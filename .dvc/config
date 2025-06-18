@@ -1,4 +1,5 @@
 [core]
     remote = localstorage
+    autostage = true
 ['remote "localstorage"']
     url = D:\Tutorials\KAIM\Weeks\Week 3\dvc_storage
