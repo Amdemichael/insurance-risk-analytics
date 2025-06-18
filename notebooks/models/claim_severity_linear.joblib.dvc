@@ -1,0 +1,5 @@
+outs:
+- md5: 60d5f4d852e9eea2a13a3869cfc56de5
+  size: 4866
+  hash: md5
+  path: claim_severity_linear.joblib

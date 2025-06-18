@@ -1,0 +1,5 @@
+outs:
+- md5: d45c18cfa8ff427aa14cc0b52c5e0035
+  size: 13825939
+  hash: md5
+  path: claim_severity_rf.joblib

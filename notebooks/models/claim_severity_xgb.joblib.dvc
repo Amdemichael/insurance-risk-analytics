@@ -1,0 +1,5 @@
+outs:
+- md5: c03d85f5e17a7209033318cc7911f5e0
+  size: 321902
+  hash: md5
+  path: claim_severity_xgb.joblib

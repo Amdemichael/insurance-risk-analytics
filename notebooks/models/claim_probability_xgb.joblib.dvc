@@ -1,0 +1,5 @@
+outs:
+- md5: c730b240766747422d1a02c8cb2da0b3
+  size: 254541
+  hash: md5
+  path: claim_probability_xgb.joblib
