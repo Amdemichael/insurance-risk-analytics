@@ -7,13 +7,13 @@ import seaborn as sns
 import os
 
 def prepare_data(df):
-    """Prepare dataset with risk metrics and standardize Gender."""
+    df['Gender'] = df['Gender'].str.upper().replace({'MALE': 'M', 'FEMALE': 'F'}).fillna('U')
+    df['ClaimFrequency'] = df.groupby('PolicyID')['TotalClaims'].transform('sum') / df.groupby('PolicyID')['TransactionMonth'].nunique()
+    df['ClaimFrequency'] = df['ClaimFrequency'].fillna(0)
     df['HasClaim'] = (df['TotalClaims'] > 0).astype(int)
-    df['ClaimSeverity'] = df['TotalClaims'].where(df['TotalClaims'] > 0)
+    df['ClaimSeverity'] = df['TotalClaims'] / df['HasClaim'].replace({0: 1})
+    df['ClaimSeverity'] = df['ClaimSeverity'].fillna(0)
     df['Margin'] = df['TotalPremium'] - df['TotalClaims']
-    # Standardize Gender to 'M' or 'F'
-    df['Gender'] = df['Gender'].str.upper().replace({'MALE': 'M', 'FEMALE': 'F', 'M': 'M', 'F': 'F'}).fillna('M')
-    df.dropna(subset=['Province', 'PostalCode', 'Gender'], inplace=True)
     return df
 
 def check_group_balance(df, feature_cols, group_col, control, test):
@@ -51,8 +51,8 @@ def test_hypothesis(group_var, df, metric, control, test, alpha=0.05):
     decision = 'Reject H0' if p_val < alpha else 'Fail to reject H0'
     return {'Test': test_type, 'Statistic': stat, 'p-value': p_val, 'Decision': decision}
 
-def visualize_results(df, group_var, metric, control, test, filename):
-    """Generate and save visualization."""
+def visualize_results(df, group_var, metric, control, test):
+    """Generate and display visualization in notebook."""
     plt.figure(figsize=(10, 6))
     if metric == 'ClaimFrequency':
         sns.barplot(x=group_var, y='HasClaim', data=df, errorbar=None)
@@ -62,9 +62,7 @@ def visualize_results(df, group_var, metric, control, test, filename):
         sns.boxplot(x=group_var, y=metric, data=df)
         plt.title(f'{metric} Distribution by {group_var} ({control} vs {test})')
     plt.xticks(rotation=45)
-    os.makedirs('data/plots', exist_ok=True)
-    plt.savefig(f'data/plots/{filename}')
-    plt.close()
+    plt.show()  # Display the plot in the notebook
 
 def generate_business_recommendations(df, results_df):
     """Generate business recommendations based on rejected hypotheses."""
